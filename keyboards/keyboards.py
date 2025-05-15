@@ -1,18 +1,17 @@
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMarkup, InlineKeyboardButton
+from aiogram.utils.keyboard import ReplyKeyboardBuilder
 
-# Основная клавиатура
-main_kb = ReplyKeyboardMarkup(
-    keyboard=[
-        [KeyboardButton(text="Меню 1"), KeyboardButton(text="Меню 2")],
-        [KeyboardButton(text="Помощь")]
-    ],
-    resize_keyboard=True
-)
 
-# Инлайн клавиатура (пример)
-inline_kb = InlineKeyboardMarkup(
-    inline_keyboard=[
-        [InlineKeyboardButton(text="Кнопка 1", callback_data="button1")],
-        [InlineKeyboardButton(text="Кнопка 2", callback_data="button2")]
-    ]
-) 
+yes_no_help_builder = ReplyKeyboardBuilder()
+but_yes = KeyboardButton(text='Давай сыграем')
+but_no = KeyboardButton(text='Не хочу играть')
+but_help = KeyboardButton(text='/help')
+yes_no_help_builder.row(but_yes, but_no, but_help)
+yes_no_help = yes_no_help_builder.as_markup(
+    resize_keyboard=True)
+
+rock_paper_scissors_btn = ReplyKeyboardBuilder()
+rock = KeyboardButton(text='🗿')
+paper = KeyboardButton(text='📜')
+scissors = KeyboardButton(text='✂️')
+rock_paper_scissors_btn.add(rock, paper, scissors)
